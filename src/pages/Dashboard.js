@@ -5,16 +5,16 @@ import '../App.css';
 
 const DashboardPage = () => {
   const { heroes } = useContext(GlobalContext)
-  // const [featuredHeroes, setFeaturedHeroes] = useState([]);
+  const [featuredHeroes, setFeaturedHeroes] = useState([]);
 
   /* TODO: Uncomment useEffect after heroes data set is hooked in */
   useEffect(() => {
-    // let featured = heroes.filter(hero => hero.featured);
+    let featured = heroes.filter(hero => hero.featured);
 
-    // setFeaturedHeroes(featured);
+    setFeaturedHeroes(featured);
   }, [heroes]);
 
-  if (heroes.length === 0) {
+  if (featuredHeroes.length === 0) {
     return (
       <div className='row text-center'>
         <div className='col'>
@@ -36,7 +36,7 @@ const DashboardPage = () => {
         </div>
       </div>
       <div className='row'>
-        {heroes.map((hero, index) => {
+        {featuredHeroes.map((hero, index) => {
           return (
             <div className='col-sm-12 col-md-3' key={hero.id}>
               <HeroCard hero={hero} />
