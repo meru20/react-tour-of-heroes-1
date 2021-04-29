@@ -4,12 +4,16 @@ import {GlobalProvider} from './context/GlobalContext';
 
 const App = () => {
   return (
-    <GlobalProvider>
-      <Router>
-      <AppRouter />
+    
+    <Router>
+        <GlobalProvider>
+            <AppRouter />
+
+        </GlobalProvider>
+      
     </Router>
 
-    </GlobalProvider>
+    
     
   );
 };
