@@ -1,18 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState , useContext} from 'react';
+import {GlobalContext} from '../context/GlobalContext'
 import HeroCard from '../components/HeroCard';
 import '../App.css';
 
 const DashboardPage = () => {
-  const [featuredHeroes, setFeaturedHeroes] = useState([]);
+  const { heroes } = useContext(GlobalContext)
+  // const [featuredHeroes, setFeaturedHeroes] = useState([]);
 
   /* TODO: Uncomment useEffect after heroes data set is hooked in */
-  // useEffect(() => {
-  //   let featured = heroes.filter(hero => hero.featured);
+  useEffect(() => {
+    // let featured = heroes.filter(hero => hero.featured);
 
-  //   setFeaturedHeroes(featured);
-  // }, [heroes]);
+    // setFeaturedHeroes(featured);
+  }, [heroes]);
 
-  if (featuredHeroes.length === 0) {
+  if (heroes.length === 0) {
     return (
       <div className='row text-center'>
         <div className='col'>
@@ -34,7 +36,7 @@ const DashboardPage = () => {
         </div>
       </div>
       <div className='row'>
-        {featuredHeroes.map((hero, index) => {
+        {heroes.map((hero, index) => {
           return (
             <div className='col-sm-12 col-md-3' key={hero.id}>
               <HeroCard hero={hero} />
